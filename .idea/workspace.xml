@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="329f7da2-0b55-4cbf-a1c4-cf87a8ebdc88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/base/BasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/base/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/pageobject/TeamSupportHomePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/pageobject/chatBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/Assert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/PageObjectSupplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/PropKeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/PropertiesUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/log/ConsoleColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/qa/utils/log/Reporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/suites/smoke.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/chatBotVital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/README.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +85,7 @@
       <updated>1666695948970</updated>
       <workItem from="1666695950390" duration="11427000" />
       <workItem from="1666715021228" duration="32000" />
+      <workItem from="1666715350435" duration="602000" />
     </task>
     <servers />
   </component>
