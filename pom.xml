@@ -32,7 +32,7 @@
         <retry.limit>1</retry.limit>
         <system.logs>true</system.logs>
         <headless>true</headless>
-        <mailslurp.api.key>176657ad9adf5007197781c1157826288ac9b82957af872a9dc7a933539c6b7a</mailslurp.api.key>
+        <mailslurp.api.key>someapikeyfrommailservice</mailslurp.api.key>
     </properties>
     <dependencies>
         <dependency>
