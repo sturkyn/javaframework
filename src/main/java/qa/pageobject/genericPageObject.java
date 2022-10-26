@@ -2,9 +2,8 @@ package qa.pageobject;
 
 import org.openqa.selenium.By;
 import qa.base.BasePage;
-import qa.utils.log.Reporter;
 
-public class chatBot extends BasePage {
+public class genericPageObject extends BasePage {
 
     protected final By chatBotPopUp = By.id("transparent-button");
     protected final By chatBotIFrame = By.xpath("//iframe[@id='designstudio-iframe']");
@@ -14,7 +13,7 @@ public class chatBot extends BasePage {
     protected final By chatBotMsg = By.xpath("//div[@class='message-text']");
     protected final String url = "https://www.teamsupport.com/";
 
-    public chatBot openChatBot() {
+    public genericPageObject openChatBot() {
         dirtyWait(2000);
         waitElementToBeClickable(chatBotPopUp);
         clickOnElement("Opening chatBot", chatBotPopUp);
@@ -22,12 +21,12 @@ public class chatBot extends BasePage {
         return this;
     }
 
-    public chatBot closeChatBot() {
+    public genericPageObject closeChatBot() {
         clickOnElement("Closing chat bot", chatBotCloseBtn);
         return this;
     }
 
-    public chatBot minimizeChatBot() {
+    public genericPageObject minimizeChatBot() {
         clickOnElement("Minimizing chatbot", chatBotMinBtn);
         return this;
     }

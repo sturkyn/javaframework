@@ -2,9 +2,8 @@ package qa.utils;
 
 import com.esotericsoftware.reflectasm.ConstructorAccess;
 import qa.base.BaseTest;
-import qa.pageobject.TeamSupportHomePage;
+import qa.pageobject.exampleHomePage;
 import qa.utils.log.Reporter;
-import qa.pageobject.chatBot;
 
 public class PageObjectSupplier {
 
@@ -13,14 +12,14 @@ public class PageObjectSupplier {
         return ConstructorAccess.get(pageObject).newInstance();
     }
 
-    public static TeamSupportHomePage loadSiteUrl(String url) {
+    public static exampleHomePage loadSiteUrl(String url) {
         Reporter.log("Opening URL: " + url);
         try {
             BaseTest.getDriver().get(url);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return $(TeamSupportHomePage.class);
+        return $(exampleHomePage.class);
     }
 
     private PageObjectSupplier() {
