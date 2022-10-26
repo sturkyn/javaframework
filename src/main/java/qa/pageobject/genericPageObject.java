@@ -11,7 +11,6 @@ public class genericPageObject extends BasePage {
     protected final By chatBotMinBtn = By.xpath("//div[@id='icon-minimize']");
     protected final By chatBotDrag = By.id("draggable");
     protected final By chatBotMsg = By.xpath("//div[@class='message-text']");
-    protected final String url = "https://www.teamsupport.com/";
 
     public genericPageObject openChatBot() {
         dirtyWait(2000);
