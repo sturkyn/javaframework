@@ -5,34 +5,25 @@ import qa.base.BasePage;
 
 public class genericPageObject extends BasePage {
 
-    protected final By chatBotPopUp = By.id("transparent-button");
-    protected final By chatBotIFrame = By.xpath("//iframe[@id='designstudio-iframe']");
-    protected final By chatBotCloseBtn = By.xpath("//div[@id='icon-close']");
-    protected final By chatBotMinBtn = By.xpath("//div[@id='icon-minimize']");
-    protected final By chatBotDrag = By.id("draggable");
-    protected final By chatBotMsg = By.xpath("//div[@class='message-text']");
+    protected final By searchBar = By.xpath("//div[@class='YacQv gsfi']");
+    protected final By searchBtn = By.xpath("//div[@class='gNO89b']");
+    protected final By searchResultInfo = By.xpath("//div[@id='result-stats']");
 
-    public genericPageObject openChatBot() {
-        dirtyWait(2000);
-        waitElementToBeClickable(chatBotPopUp);
-        clickOnElement("Opening chatBot", chatBotPopUp);
-        switchToChatBotIFrame(chatBotIFrame);
+    public genericPageObject typeToSearchBar() {
+        clickOnElement("Click on search bar", searchBar);
+        typeText("Searching for SCG","SCG",searchBar);
         return this;
     }
 
-    public genericPageObject closeChatBot() {
-        clickOnElement("Closing chat bot", chatBotCloseBtn);
+    public genericPageObject clickOnSearchBtn() {
+        clickOutsideThePage();
+        clickOnElement("Click on search button", searchBtn);
         return this;
     }
 
-    public genericPageObject minimizeChatBot() {
-        clickOnElement("Minimizing chatbot", chatBotMinBtn);
-        return this;
-    }
-
-    public String chatBotMsgCheck() {
-        waitForPresenceOfElement(chatBotMsg);
-        return getElementText(chatBotMsg);
+    public String searchResultCountCheck() {
+        waitForPresenceOfElement(searchResultInfo);
+        return getElementText(searchResultInfo);
     }
 
 }

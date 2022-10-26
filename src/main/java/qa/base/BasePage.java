@@ -1,21 +1,13 @@
 package qa.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.interactions.Actions;
 import qa.utils.log.Reporter;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.datatransfer.*;
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
-import java.util.List;
 import java.util.*;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -116,7 +108,13 @@ public class BasePage {
         findElement(element).click();
     }
 
-    public void typeTextToChatBot(String message, String text, By field) {
+    public void clickOutsideThePage() {
+        Reporter.log(this.getClass().getSimpleName() + ": " + "Click outside the page");
+        Actions action = new Actions(driver);
+        action.moveByOffset(1, 1).click().build().perform();
+    }
+
+    public void typeText(String message, String text, By field) {
         Reporter.log(this.getClass().getSimpleName() + ": " + message + " With data - " + text);
         waitForPresenceOfElement(field);
         findElement(field).sendKeys(text);

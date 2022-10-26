@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.Set;
 
 public class PropertiesUtils {
-    public static final String PROP_FILE_NAME = "/target/classes/config.properties";
+    public static final String PROP_FILE_NAME = "/src/main/resources/config.properties";
     private static Map<String, String> props = getPropValues();
 
     public static String getStringValue(String key) {

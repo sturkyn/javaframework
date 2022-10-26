@@ -10,13 +10,25 @@ import static qa.utils.PageObjectSupplier.*;
 public class genericTestClass extends BaseTest {
 
     @Test()
-    public void chatBotOpenCloseTest() {
-        loadSiteUrl("https://www.teamsupport.com/")
+    public void simpleSearchTest() {
+        loadSiteUrl("https://www.google.com/")
                 .allowCookies();
         $(genericPageObject.class)
-                .openChatBot();
-        Assert.assertEquals($(genericPageObject.class).chatBotMsgCheck(),
-                "Looking to grow customer revenue with better customer experiences? We can help!", "Checking chat bot greeting message!");
+                .typeToSearchBar()
+                .clickOnSearchBtn();
+        Assert.assertEquals($(genericPageObject.class).searchResultCountCheck(),
+                "Ungefähr 33.000.000 Ergebnisse", "Checking search result count");
+    }
+
+    @Test()
+    public void simpleSearchAssertTest() {
+        loadSiteUrl("https://www.google.com/")
+                .allowCookies();
+        $(genericPageObject.class)
+                .typeToSearchBar()
+                .clickOnSearchBtn();
+        Assert.assertEquals($(genericPageObject.class).searchResultCountCheck(),
+                "Ungefähr 33.000.000 Ergebnisse", "Checking search result count");
     }
 
 }

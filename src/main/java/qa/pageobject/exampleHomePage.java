@@ -5,8 +5,8 @@ import qa.base.BasePage;
 
 public class exampleHomePage extends BasePage {
 
-    protected final By cookieConsentAcceptBtn = By.xpath("//div[@id='hs-eu-cookie-confirmation-button-group']");
-    protected final By cookieConsentBanner = By.xpath("//div[@id='hs-eu-cookie-confirmation']");
+    protected final By cookieConsentAcceptBtn = By.xpath("//div[@id='L2AGLb']");
+    protected final By cookieConsentBanner = By.xpath("//div[@id='CXQnmb']");
 
     public exampleHomePage allowCookies() {
         waitForPresenceOfElement(cookieConsentBanner);
