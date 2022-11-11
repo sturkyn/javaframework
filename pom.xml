@@ -22,7 +22,7 @@
         <suites>${env.SUITES}</suites>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.6</aspectj.version>
-        <selenium-version>4.1.3</selenium-version>
+        <selenium-version>4.6.0</selenium-version>
         <testng-version>7.4.0</testng-version>
         <allure-testng-version>2.18.1</allure-testng-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>

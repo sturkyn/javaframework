@@ -3,7 +3,11 @@
 <suite name="Smoke Suite" parallel="tests" thread-count="1">
     <test name = "Chat Bot Vitals">
         <classes>
-            <class name = "tests.genericTestClass"></class>
+            <class name = "tests.genericTestClass">
+                <methods>
+                    <include name="simpleSearchTest"></include>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
