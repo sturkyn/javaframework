@@ -6,6 +6,7 @@
             <class name = "tests.genericTestClass">
                 <methods>
                     <include name="simpleSearchTest"></include>
+                    <include name="simpleSearchAssertTest"></include>
                 </methods>
             </class>
         </classes>
