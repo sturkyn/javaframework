@@ -89,7 +89,7 @@ public class BaseTest {
                         "--no-sandbox",
                         "--disable-gpu"
                 );
-                //options.addArguments("--headless");
+                options.addArguments("--headless");
                 options.addArguments("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.119 Safari/537.36\"");
                 /*System.out.println(WebDriverManager.chromedriver().getDriverVersions());*/
                 WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();

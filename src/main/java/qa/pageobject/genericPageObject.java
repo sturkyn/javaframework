@@ -26,4 +26,8 @@ public class genericPageObject extends BasePage {
         return getElementText(searchResultInfo);
     }
 
+    public String getHomePageUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }
