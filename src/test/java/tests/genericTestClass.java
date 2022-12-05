@@ -14,9 +14,12 @@ public class genericTestClass extends BaseTest {
 
     @Test()
     public void simpleSearchTest() {
-        loadSiteUrl("https://www.google.com/")
+        loadSiteUrl("https://www.trendyol.com/")
                 .allowCookies();
-        Assert.assertEquals($(genericPageObject.class).getHomePageUrl(),
+        $(genericPageObject.class)
+                .typeToSearchBar()
+                .clickOnSearchBtn();
+        Assert.assertEquals($(genericPageObject.class).searchResultCountCheck(),
                 "SCG", "Checking search result name");
     }
 
