@@ -1,41 +1,63 @@
 package qa.base;
 
-import io.qameta.allure.Attachment;
 import qa.utils.PropertiesUtils;
 import qa.utils.log.Reporter;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.TestException;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
+
+@Listeners({BaseListener.class})
 public class BaseTest {
-    private static final ThreadLocal<WebDriver> WEB_DRIVER_CONTAINER = new ThreadLocal<>();
-    private WebDriver driver;
+    private static final Map<Long, BaseDriver> threadSwitch = new HashMap<>();
+    public static WebDriver getDriver() throws TestException {
+        Long threadId = Thread.currentThread().getId();
+        BaseDriver baseD = null;
+        synchronized (threadSwitch) {
+            baseD = threadSwitch.get(threadId);
+        }
+        if (baseD == null) {
+            throw new TestException("Webdriver is NULL"); // NULL driver check, ideally this shouldn't happen!
+        }
+        return baseD.getDr();
+    }
 
-    public static WebDriver getDriver() {
-        return WEB_DRIVER_CONTAINER.get();
+    private static BaseDriver createDriver(String browserName, Long threadId) {
+        BaseDriver baseD = new BaseDriver(browserName);
+        synchronized (threadSwitch) {
+            threadSwitch.put(threadId, baseD);
+        }
+
+        if (!baseD.isInitiated())
+            baseD.initiateDriver();
+
+        return baseD;
     }
 
     @BeforeMethod
     public void runOn() {
-        Reporter.log("STARTING BROWSER");
+        String browserName = PropertiesUtils.getProp("browserName");
+        Reporter.log("STARTING BROWSER -" + browserName);
         //Config launching app
-        createDriver(); //launch browser using webdriver manager
+        createDriver(browserName, Thread.currentThread().getId()); //launch browser using webdriver manager
     }
 
     @BeforeMethod
-    public void setup(Method method) {
+    public static void setup(Method method) {
         //Extent report config
         String testName = method.getName();
+        Thread.currentThread().setName(testName);
         Reporter.log("Method -" + testName + " - is started.");
         Reporter.log("---------------------------------------------------------------------------------------------");
     }
@@ -66,37 +88,28 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.close();
-            driver.quit();
-            WEB_DRIVER_CONTAINER.remove();
+    public void tearDownDriver() throws TestException {
+        try {
+            WebDriver currentDriver = getDriver();
+            if (currentDriver != null) {
+                currentDriver.close();
+                currentDriver.quit();
+            }
+        } catch (Exception e) {
+            Reporter.logFail("Driver could not be closed.");
         }
+
     }
-    public void createDriver() {
 
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments(
-                        "--lang=en",
-                        "--window-size=2000,1500",
-                        "--disable-extensions",
-                        "--disable-dev-shm-usage",
-                        "--verbose",
-                        "--disable-web-security",
-                        "--ignore-certificate-errors",
-                        "--allow-running-insecure-content",
-                        "--allow-insecure-localhost",
-                        "--no-sandbox",
-                        "--disable-gpu"
-                );
-                options.addArguments("--headless");
-                options.addArguments("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.119 Safari/537.36\"");
-                /*System.out.println(WebDriverManager.chromedriver().getDriverVersions());*/
-                WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
-                driver = new ChromeDriver(options);
-                driver.manage().window().maximize();
-                WEB_DRIVER_CONTAINER.set(driver);
-
+    @AfterSuite
+    public void tearDownChrome() {
+        try {
+            ProcessBuilder process = new ProcessBuilder();
+            process.command("pkill Chrome");
+            process.command("pkill chromedriver");
+        } catch (Exception e) {
+            Reporter.logFail("Bash command could not be executed.");
+        }
     }
 
 }

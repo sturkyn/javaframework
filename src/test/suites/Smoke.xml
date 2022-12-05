@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Smoke Suite" parallel="tests" thread-count="1">
+<suite name="Smoke Suite" parallel="methods" thread-count="2">
     <listeners>
         <listener class-name="qa.utils.retryAnalyzer.AnnotationTransformer"/>
     </listeners>
-    <test name = "Chat Bot Vitals">
+    <test name = "Chat Bot Vitals" parallel="methods" thread-count="2">
         <classes>
             <class name = "tests.genericTestClass">
                 <methods>
                     <include name="simpleSearchTest"></include>
-                    <!--<include name="simpleSearchAssertTest"></include>-->
+                    <include name="simpleSearchAssertTest"></include>
                 </methods>
             </class>
         </classes>
