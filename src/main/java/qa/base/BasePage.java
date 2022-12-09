@@ -131,4 +131,29 @@ public class BasePage {
         Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Page loaded");
     }
 
+    public void switchToNewlyOpenedTab() {
+        ArrayList<String> windows = new ArrayList<>(driver.getWindowHandles());
+        if (windows.size() > 1) {
+            driver.switchTo().window(windows.get(1));
+        }
+    }
+
+    public void switchToTheLatestOpenedTab() {
+        ArrayList<String> windows = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windows.get(windows.size() - 1));
+    }
+
+    public void navigateToSpecificUrl(String specURL) {
+        Reporter.log("Opening URL: " + specURL);
+        driver.navigate().to(specURL);
+    }
+
+    public BasePage createNewTab() {
+        //creates new tab
+        ((JavascriptExecutor) driver).executeScript("window.open('about:blank','_blank');");
+        //switches to it
+        switchToNewlyOpenedTab();
+        return this;
+    }
+
 }
