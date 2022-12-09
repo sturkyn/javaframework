@@ -15,12 +15,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 public class BasePage {
 
     protected final WebDriver driver;
-    protected final By chatBotPopUp = By.id("transparent-button");
-    protected final By chatBotCloseBtn = By.xpath("//div[@id='icon-close']");
-    protected final By chatBotMinBtn = By.xpath("//div[@id='icon-minimize']");
-    protected final By chatBotDrag = By.id("draggable");
-    protected final By chatBotMsg = By.xpath("//div[@class='message-text']");
-    protected final By chatBotIFrame = By.xpath("//iframe[@id='designstudio-iframe']");
+
     final FluentWait<WebDriver> wait;
     private final int defaultImplicitlyWaitTime = 40;
 
@@ -120,27 +115,20 @@ public class BasePage {
         findElement(field).sendKeys(text);
     }
 
-    protected void waitForChatBotAppearance() {
-        Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Waiting chat bot to appear...");
+    protected void waitForPageLoaded(By element) {
+        Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Waiting page to load...");
         Date dateBefore = new Date();
         for (int i = 0; i < 10; i++) {
-            if (isElementPresentWithWait(chatBotDrag, 1)) {
+            if (isElementPresentWithWait(element, 1)) {
                 dirtyWait(500);
                 continue;
             }
             Date dateAfter = new Date();
             if (i != 0)
-                Reporter.logSystem(this.getClass().getSimpleName() + ": " + "ChatBot appears " + (dateAfter.getTime() - dateBefore.getTime()) / 1000 + " Seconds");
+                Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Loading Spinner appears " + (dateAfter.getTime() - dateBefore.getTime()) / 1000 + " Seconds");
             break;
         }
         Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Page loaded");
     }
-
-    protected void switchToChatBotIFrame(By element) {
-        Reporter.logSystem(this.getClass().getSimpleName() + ": " + "Switching to frame.");
-        driver.switchTo().frame(findElement(element));
-        waitForChatBotAppearance();
-    }
-
 
 }
