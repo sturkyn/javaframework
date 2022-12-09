@@ -40,7 +40,7 @@ public class BaseDriver {
                         "--disable-gpu"
                 );
                 if (PropertiesUtils.getProp(PropKeys.HEADLESS.getPropName()).equals("true"))
-                    options.addArguments("--headless");
+                    //options.addArguments("--headless");
                 options.addArguments("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36");
                 /* Browser versions are hard-coded for CI now, please contact in team slack or DevOps to configure */
                 /* -> */WebDriverManager.chromedriver().browserVersion("108.0.5359.71").setup();/* <- */
