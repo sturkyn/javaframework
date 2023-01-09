@@ -156,4 +156,18 @@ public class BasePage {
         return this;
     }
 
+    public void hoverOverElement(By locator) {
+        waitForElement(locator);
+        WebElement element = findElement(locator);
+        Actions act = new Actions(driver);
+        act.moveToElement(element).perform();
+        dirtyWait(250);
+    }
+
+    protected void scrollToElement(By locator) {
+        waitForElement(locator);
+        WebElement element = findElement(locator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
 }

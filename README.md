@@ -5,7 +5,12 @@
 ### Package Manager: **Maven**
 ### Runner: **TestNG**
 ### API Testing: **RestAssured**
-### Reporting Tools: **Allure Reports**, **Test Rail**
+### Reporting Tools: **Allure Reports**
+
+## Use following command to run the desired test suite:
+## `mvn clean test -Dsuites={test_suite_name} -Dapp`
+
+### Change the browser version to your local version at BaseDriver.java line 46!
 
 *You can work on the project with Windows/Mac/Linux systems.*
 ## Installation
@@ -24,9 +29,8 @@ Install homebrew via just pasting below line on terminal:
 * Install allure reports via Homebrew (use Mac terminal):
   `brew install allure`
 * Download Xcode from App Store (This will enable Git on your Macbook)
-* Clone the  [web-automation](https://github.com/elopage/web-automation) repository.
+* Clone the  [javaframework](https://github.com/sturkyn/javaframework) repository.
 * Open the project on your IDE and let maven build scripts work to download all dependencies.
-  _We use [IntelliJ IDEA](https://www.jetbrains.com/idea) as IDE. Please ask your team leader for JetBrains premium account._
 
 ### Windows PC
 
@@ -48,9 +52,6 @@ Some additional steps are required to run the code on Windows PC.
 
 For adding new dependencies to the project, visit [mvn repository](https://mvnrepository.com/) and add them under <Dependencies> tag of pom.xml
 
-Use following command to run the desired test suite:
-`mvn clean test -Dsuites={test_suite_name} -Dapp`
-
 _You can find test suites under src/test/suites and add the relevant suite name to the command line code._
 _You can find linter rules under /checkstyle.xml
 
@@ -71,4 +72,4 @@ This section defines or targets coding guidelines (might contain links to conflu
 
 `allure generate --clean --output your-result-folder` _(caution with clean command as it will remove all files in directory)_
 
-_Have a nice time coding with us!_
+_Have a nice time coding with the framework!_
