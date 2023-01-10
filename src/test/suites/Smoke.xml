@@ -6,7 +6,7 @@
     </listeners>
     <test name = "Chat Bot Vitals" parallel="methods" thread-count="2">
         <classes>
-            <class name = "tests.genericTestClass">
+            <class name = "tests.GenericTestClass">
                 <methods>
                     <include name="simpleSearchTest"></include>
                     <include name="simpleSearchAssertTest"></include>
