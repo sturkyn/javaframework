@@ -92,7 +92,6 @@ public class BaseTest {
         try {
             WebDriver currentDriver = getDriver();
             if (currentDriver != null) {
-                currentDriver.close();
                 currentDriver.quit();
             }
         } catch (Exception e) {
