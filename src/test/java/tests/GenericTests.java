@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static qa.utils.PageObjectSupplier.*;
 
 @Listeners(BaseListener.class)
-public class GenericTestClass extends BaseTest {
+public class GenericTests extends BaseTest {
 
     @Test()
     public void simpleSearchTest() {
