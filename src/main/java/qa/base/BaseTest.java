@@ -101,7 +101,8 @@ public class BaseTest {
 
     }
 
-    @AfterSuite
+    /*@AfterSuite
+    // Only to be enabled on CI/CD runs
     public void tearDownChrome() {
         try {
             ProcessBuilder process = new ProcessBuilder();
@@ -110,6 +111,6 @@ public class BaseTest {
         } catch (Exception e) {
             Reporter.logFail("Bash command could not be executed.");
         }
-    }
+    }*/
 
 }
