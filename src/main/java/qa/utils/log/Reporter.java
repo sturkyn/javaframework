@@ -1,4 +1,5 @@
 package qa.utils.log;
+
 import qa.base.BaseTest;
 import qa.utils.PropKeys;
 import qa.utils.PropertiesUtils;
